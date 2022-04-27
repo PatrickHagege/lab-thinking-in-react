@@ -13,26 +13,33 @@ const ProductsPage = () => {
     }, [])
 
     let searchedProducts = null;
+    // si le champs contient une chaine && que la checkbox est cochée
+    // alors on filtre products sur les caracteres saisis && qui sont en stock
     if ((searchTerm!=='') && (checkBoxValue)) {
-        searchedProducts=products.filter((product)=>{
-            return product.name.toLowerCase().includes(searchTerm.toLowerCase());
-        }).filter((product)=>{
-            return product.inStock;
+        searchedProducts=products
+            .filter((product) => {
+                return product.name.toLowerCase().includes(searchTerm.toLowerCase());
+            })
+            .filter((product) => {
+                return product.inStock;
         })
+    // si le champs de recherche contient une chaine de caractères
     } else if (searchTerm!=='') {
-        searchedProducts=products.filter((product)=>{
+        searchedProducts=products.filter((product) => {
             return product.name.toLowerCase().includes(searchTerm.toLowerCase());
         })
+    // si la checkbox est cochee alors j'affiche les produits en stock
     } else if (checkBoxValue) {
-        searchedProducts=products.filter((product)=>{
+        searchedProducts=products.filter((product) => {
             return product.inStock;
         })
+    // sinon on envoie dans searchProduct ce qui vient du fichier json
     } else {
         searchedProducts=products;
     }
 
     return(
-        <div>
+        <div className='ProductPage'>
           <h1>IronStore</h1>
           <SearchBar
             searchTerm={searchTerm}

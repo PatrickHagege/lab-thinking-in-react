@@ -1,9 +1,13 @@
 import ProductsRow from './ProductsRow';
 
-const ProductsTable = ( { products} ) => {
+const ProductsTable = ({ products }) => {
 
-    return  (
-        <table>
+    return (
+        <table
+            className='ProductTable'
+            cellSpacing={'Opx'}
+            cellPadding={'Opx'}
+        >
             <thead>
                 <tr>
                     <th>Name</th>
@@ -12,12 +16,13 @@ const ProductsTable = ( { products} ) => {
             </thead>
             <tbody>
                 {
-                    products.map( (product) => { 
-                    return (<ProductsRow key={product.id} product={product}/>)
+                    products.map((product) => {
+                        return (<ProductsRow key={product.id} product={product} />)
                     })
                 }
-        </tbody>
+            </tbody>
         </table>
-    )}
+    )
+}
 
 export default ProductsTable;

@@ -1,12 +1,12 @@
-const ProductRow = ( {product } ) => {
+const ProductRow = ({ product }) => {
 
     return (
         <tr>
             <td style={{ color: product.inStock ? 'black' : 'red' }}>
-                { product.name }
+                {product.name}
             </td>
             <td>
-                { product.price }
+                {product.price}
             </td>
         </tr>
     )
